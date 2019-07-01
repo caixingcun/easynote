@@ -4,19 +4,28 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.caixc.easynoteapp.R
+import com.caixc.easynoteapp.base.BaseActivity
 import com.caixc.easynoteapp.base.Preference
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
+    override fun getData() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        val token = Preference().getValue("token", "")
 
-        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        if (token?.isNotEmpty()) {
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+        }else{
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        }
+
         finish()
     }
 
+    override fun refeshView() {
 
+    }
+
+    override fun setLayout(): Int = R.layout.activity_splash
 
 
 }

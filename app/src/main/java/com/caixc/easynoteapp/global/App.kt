@@ -10,4 +10,9 @@ class App : Application() {
         Preference.setContext(applicationContext)
     }
 
+    companion object {
+      const val debug = true
+
+    }
+
 }
