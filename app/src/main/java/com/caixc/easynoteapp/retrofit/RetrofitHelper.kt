@@ -4,6 +4,7 @@ import android.util.Log
 import com.caixc.easynoteapp.base.Preference
 import com.caixc.easynoteapp.global.App
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitHelper {
 
-     fun create(url: String): Retrofit {
+     fun create(baseUrl: String): Retrofit {
         val okHttpClient = OkHttpClient().newBuilder().apply {
             connectTimeout(30, TimeUnit.SECONDS)
             readTimeout(10, TimeUnit.SECONDS)
@@ -50,10 +51,10 @@ object RetrofitHelper {
 
         return Retrofit.Builder().apply {
 
-            baseUrl(url)
+            baseUrl(baseUrl)
                 .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
         }.build()
 
     }
