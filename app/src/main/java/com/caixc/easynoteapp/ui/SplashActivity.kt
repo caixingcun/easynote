@@ -12,12 +12,12 @@ class SplashActivity : BaseActivity() {
 
         val token = Preference().getValue("token", "")
 
-        if (token?.isNotEmpty()) {
-            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
-        }else{
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-        }
-
+//        if (token?.isNotEmpty()) {
+//            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+//        }else{
+//            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+//        }
+        startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
         finish()
     }
 

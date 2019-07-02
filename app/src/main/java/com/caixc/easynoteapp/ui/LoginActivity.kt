@@ -1,11 +1,15 @@
 package com.caixc.easynoteapp.ui
 
+import android.util.Log
+import android.widget.Toast
 import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.base.BaseActivity
+import com.caixc.easynoteapp.bean.GankBean
 import com.caixc.easynoteapp.bean.LoginBean
 import com.caixc.easynoteapp.bean.LoginResultBean
 import com.caixc.easynoteapp.retrofit.RetrofitHelper
 import com.caixc.easynoteapp.retrofit.RetrofitService
+import com.google.gson.Gson
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -17,38 +21,39 @@ class LoginActivity : BaseActivity() {
 
     override fun initListener() {
         btn_login.setOnClickListener {
+            RetrofitHelper.create("http://gank.io").create(RetrofitService::class.java)
+                .gank()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object :Observer<GankBean>{
+                    override fun onComplete() {
 
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onNext(t: GankBean) {
+                        Log.d("tag", Gson().toJson(t))
+                Toast.makeText(this@LoginActivity,Gson().toJson(t),Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("tag",e.toString())
+                    }
+
+                })
 
         }
 
 
     }
 
-    private val retrofit = RetrofitHelper.create("https://139.196.87.25").create(RetrofitService::class.java)
+
 
     override fun getData() {
-        retrofit
-            .login("{\"userName\":\"18606291073\",\"password\":\"123456\"}")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object :Observer<LoginResultBean>{
-                override fun onComplete() {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
 
-                override fun onSubscribe(d: Disposable) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onNext(t: LoginResultBean) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onError(e: Throwable) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-            })
 
 
 
