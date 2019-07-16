@@ -4,18 +4,12 @@ import android.util.Log
 import com.caixc.easynoteapp.base.Preference
 import com.caixc.easynoteapp.global.App
 import com.caixc.easynoteapp.util.HttpsUtils
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.net.InetAddress
-import java.net.Socket
-import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.SSLSocketFactory
-import javax.net.ssl.X509TrustManager
 
 object RetrofitHelper {
 
@@ -64,7 +58,7 @@ object RetrofitHelper {
             baseUrl(baseUrl)
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(MyGsonCovertFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
         }.build()
 
     }
