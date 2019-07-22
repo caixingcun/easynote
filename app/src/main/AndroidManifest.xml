@@ -9,9 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:name=".global.App"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/AppTheme">
         <activity
                 android:name=".ui.SplashActivity"
+                android:theme="@style/SplashTheme"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>

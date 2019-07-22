@@ -1,7 +1,10 @@
-package com.caixc.easynoteapp.ui;
+package com.caixc.easynoteapp.util;
 
 import android.util.Log;
 
+/**
+ * 日志工具类
+ */
 public class Logutil {
     public static final String TAG = "tag";
     public static final boolean IS_DEBUG = false;

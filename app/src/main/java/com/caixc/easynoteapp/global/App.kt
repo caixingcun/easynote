@@ -7,6 +7,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+//        初始化sp
         Preference.setContext(applicationContext)
     }
 

@@ -1,6 +1,5 @@
 package com.caixc.easynoteapp.util
 
-import com.caixc.easynoteapp.ui.Logutil
 import java.io.IOException
 import java.io.InputStream
 import java.security.KeyManagementException
@@ -11,6 +10,9 @@ import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
 import javax.net.ssl.*
 
+/**
+ * https证书配置工具类
+ */
 object HttpsUtils {
 
     val sslSocketFactory: SSLParams

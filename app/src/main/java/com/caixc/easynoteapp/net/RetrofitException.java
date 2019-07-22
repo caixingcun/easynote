@@ -1,4 +1,4 @@
-package com.caixc.easynoteapp.retrofit;
+package com.caixc.easynoteapp.net;
 
 import android.net.ParseException;
 import android.text.TextUtils;
@@ -6,7 +6,6 @@ import com.caixc.easynoteapp.bean.HttpErrorBean;
 import com.caixc.easynoteapp.exception.ResponeThrowable;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import org.json.JSONException;
 import retrofit2.Response;

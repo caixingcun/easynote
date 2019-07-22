@@ -2,14 +2,14 @@ package com.caixc.easynoteapp.base
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.gyf.barlibrary.ImmersionBar
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : BaseRxActivity() {
     protected lateinit var immersionBar: ImmersionBar
-     lateinit var mActivity : BaseActivity
+    lateinit var mActivity: BaseActivity
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,18 +18,18 @@ abstract class BaseActivity : AppCompatActivity() {
         mActivity = this
         initView()
         initListener()
-        refeshView()
+        refreshView()
         getData()
 
     }
 
     open fun initListener() {}
 
-    fun initView() {}
+    open fun initView(){}
 
-    abstract fun getData()
+    open fun getData(){}
 
-    abstract fun refeshView()
+    open fun refreshView(){}
 
     /**
      * 获取 InputMethodManager

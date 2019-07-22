@@ -1,6 +1,7 @@
-package com.caixc.easynoteapp.retrofit;
+package com.caixc.easynoteapp.net;
 
 import com.caixc.easynoteapp.BuildConfig;
+import com.caixc.easynoteapp.base.Preference;
 import com.caixc.easynoteapp.util.HttpsUtils;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import okhttp3.*;
@@ -25,7 +26,7 @@ public class RetrofitClient {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 request.newBuilder()
-                        .header("token", "")
+                        .header("token", Preference.preferences.getString("token", ""))
                         .header("UserAgent", "android")
                         .method(request.method(), request.body())
                         .build();
