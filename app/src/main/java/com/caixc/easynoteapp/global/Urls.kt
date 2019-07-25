@@ -1,9 +1,9 @@
 package com.caixc.easynoteapp.global
 
-class Constants {
-
+class Urls {
     companion object {
-        val TOKEN = "token"
+        val HOST = "https://139.196.87.25"
+
 
     }
 }

@@ -6,6 +6,7 @@ import com.caixc.easynoteapp.base.BaseActivity
 import com.caixc.easynoteapp.base.Preference
 import com.caixc.easynoteapp.bean.LoginResultBean
 import com.caixc.easynoteapp.global.Constants
+import com.caixc.easynoteapp.global.Urls
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
 import com.caixc.easynoteapp.net.RetrofitException
@@ -23,7 +24,7 @@ class LoginActivity : BaseActivity() {
             var account: String = et_account.text.toString().trim()
             val password = et_pwd.text.toString().trim()
 
-            RetrofitClient().getInstance("https://139.196.87.25")
+            RetrofitClient().getInstance(Urls.HOST)
                 .create(RetrofitService::class.java)
                 .login(account, password)
                 .subscribeOn(Schedulers.io())
