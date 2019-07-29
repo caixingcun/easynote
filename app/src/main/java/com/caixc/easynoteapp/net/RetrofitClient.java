@@ -2,6 +2,10 @@ package com.caixc.easynoteapp.net;
 
 import com.caixc.easynoteapp.BuildConfig;
 import com.caixc.easynoteapp.base.Preference;
+import com.caixc.easynoteapp.constant.Constant;
+import com.caixc.easynoteapp.global.App;
+import com.caixc.easynoteapp.global.Constants;
+import com.caixc.easynoteapp.intercept.LogInterceptor;
 import com.caixc.easynoteapp.util.HttpsUtils;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import okhttp3.*;
@@ -25,12 +29,12 @@ public class RetrofitClient {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                request.newBuilder()
-                        .header("token", Preference.preferences.getString("token", ""))
+                Request request1 = request.newBuilder()
+                        .header("token", Preference.preferences.getString(Constants.TOKEN, ""))
                         .header("UserAgent", "android")
                         .method(request.method(), request.body())
                         .build();
-                return chain.proceed(request);
+                return chain.proceed(request1);
             }
         };
     }
@@ -43,17 +47,11 @@ public class RetrofitClient {
                 .sslSocketFactory(sslSocketFactory.getSSLSocketFactory(), sslSocketFactory.getTrustManager())
                 .hostnameVerifier(getTrustAllVerifier())
                 .addInterceptor(createRequestIntercept())  //过滤器
-                .addInterceptor(createLogIntercept()) //log日志过滤器
+                .addInterceptor(new LogInterceptor("tag",App.debug)) //log日志过滤器
                 .build();
 
     }
 
-    private static Interceptor createLogIntercept() {
-        if (BuildConfig.DEBUG) {
-            return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
-        }
-        return null;
-    }
 
     private static HostnameVerifier getTrustAllVerifier() {
         return new HostnameVerifier() {

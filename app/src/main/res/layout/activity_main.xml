@@ -11,24 +11,11 @@
     <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                app:title=""
-                android:background="@color/white"
-                android:layout_height="?attr/actionBarSize">
-            <TextView android:layout_width="match_parent"
-                      android:gravity="center_horizontal"
-                      android:text="便签"
-                      android:id="@+id/tv_title"
-                      android:textSize="15sp"
-                      android:layout_height="wrap_content"/>
-        </android.support.v7.widget.Toolbar>
+        <include layout="@layout/include_toolbar"/>
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_height="match_parent">
+
         <LinearLayout android:layout_width="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
                       android:orientation="vertical"
                       android:layout_height="match_parent">
             <android.support.v7.widget.SearchView
@@ -36,15 +23,19 @@
                     android:id="@+id/search_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-            <android.support.v7.widget.RecyclerView
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/recycler_view"
+                    android:id="@+id/refresh_layout"
                     android:layout_height="match_parent">
+                <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/recycler_view"
+                        android:layout_height="match_parent">
 
-            </android.support.v7.widget.RecyclerView>
+                </android.support.v7.widget.RecyclerView>
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

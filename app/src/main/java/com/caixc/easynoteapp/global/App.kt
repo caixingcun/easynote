@@ -13,7 +13,6 @@ class App : Application() {
 
     companion object {
       const val debug = true
-
     }
 
 }

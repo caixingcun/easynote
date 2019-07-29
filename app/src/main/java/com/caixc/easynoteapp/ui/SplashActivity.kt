@@ -21,8 +21,8 @@ class SplashActivity : BaseActivity() {
                     startActivity(Intent(mActivity, MainActivity::class.java))
                 } else {
                     startActivity(Intent(mActivity, LoginActivity::class.java))
-                    finish()
                 }
+                    finish()
             }
 
     }

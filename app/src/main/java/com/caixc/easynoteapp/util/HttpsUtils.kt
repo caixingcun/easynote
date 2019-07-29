@@ -129,7 +129,7 @@ object HttpsUtils {
             kmf.init(clientKeyStore, password.toCharArray())
             return kmf.keyManagers
         } catch (e: Exception) {
-            Logutil.debug(e.toString())
+            LogUtils.debug(e.toString())
 
         }
 
@@ -153,7 +153,7 @@ object HttpsUtils {
                 try {
                     certStream?.close()
                 } catch (e: IOException) {
-                    Logutil.debug(e.toString())
+                    LogUtils.debug(e.toString())
                 }
 
             }
@@ -164,7 +164,7 @@ object HttpsUtils {
             //通过tmf获取TrustManager数组，TrustManager也会信任keyStore中的证书
             return tmf.trustManagers
         } catch (e: Exception) {
-            Logutil.debug(e.toString())
+            LogUtils.debug(e.toString())
         }
 
         return null

@@ -8,7 +8,7 @@ import io.reactivex.Observable
 import retrofit2.http.*
 
 
-interface RetrofitService {
+interface LoginService {
     /**
      * 登录
      */
@@ -35,12 +35,6 @@ interface RetrofitService {
     @POST("/user/changepwd")
     fun changePwd(@Field("account") account: String, @Field("password") password: String,@Field("new_password")newPassword:String): Observable<LoginResultBean>
 
-
-    /**
-     * 根据id 获取日记详情
-     */
-    @GET("/api/note")
-    fun getNote(@Query("id") id: String): Observable<NoteBean>
 
 
 

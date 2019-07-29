@@ -12,7 +12,7 @@ open class BaseRxActivity : AppCompatActivity() {
         compositeDisposable.add(d)
     }
 
-    fun dispose() {
+    private fun dispose() {
         compositeDisposable?.dispose()
     }
 
