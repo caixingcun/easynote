@@ -6,7 +6,7 @@ import com.caixc.easynoteapp.bean.NoteBean
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 
-class HomeAdapter(layoutResId: Int, data: MutableList<NoteBean>?) : BaseQuickAdapter<NoteBean, BaseViewHolder>(layoutResId, data) {
+class NoteAdapter(layoutResId: Int, data: MutableList<NoteBean>?) : BaseQuickAdapter<NoteBean, BaseViewHolder>(layoutResId, data) {
 
     var isSelect: Boolean = false
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import com.caixc.easynoteapp.R;
+import com.caixc.easynoteapp.util.LogUtils;
 import com.ldoublem.loadingviewlib.view.LVFinePoiStar;
 
 /**
@@ -28,6 +29,7 @@ public class CustomProgress extends Dialog {
      * 当窗口焦点改变时调用
      */
     public void onWindowFocusChanged(boolean hasFocus) {
+        LogUtils.debug(hasFocus + " hasFocus");
         LVFinePoiStar star = (LVFinePoiStar) findViewById(R.id.lv_fine_poi_star);
         // 获取ImageView上的动画背景
         star.setCircleColor(Color.RED);
@@ -37,19 +39,7 @@ public class CustomProgress extends Dialog {
         // 开始动画
     }
 
-    /**
-     * 给Dialog设置提示信息
-     *
-     * @param message
-     */
-    public void setMessage(CharSequence message) {
-        if (!TextUtils.isEmpty(message)) {
-            findViewById(R.id.message).setVisibility(View.VISIBLE);
-            TextView txt = (TextView) findViewById(R.id.message);
-            txt.setText(message);
-            txt.invalidate();
-        }
-    }
+
 
     /**
      * 弹出自定义ProgressDialog
@@ -61,6 +51,7 @@ public class CustomProgress extends Dialog {
      * @return
      */
     public static CustomProgress build(Context context, CharSequence message) {
+        LogUtils.debug("CustomProgress build");
         CustomProgress dialog = new CustomProgress(context, R.style.Custom_Progress);
         dialog.setTitle("");
         dialog.setContentView(R.layout.progress_dialog);

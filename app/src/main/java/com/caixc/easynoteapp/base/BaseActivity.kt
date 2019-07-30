@@ -4,8 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.widget.CustomProgress
 import com.gyf.barlibrary.ImmersionBar
+import com.caixc.easynoteapp.util.ActivityController
+
+
 
 abstract class BaseActivity : BaseRxActivity() {
     protected lateinit var immersionBar: ImmersionBar
@@ -18,6 +22,7 @@ abstract class BaseActivity : BaseRxActivity() {
         setContentView(setLayout())
         initImmersionBar()
         mActivity = this
+        ActivityController.addActivity(mActivity)
         initView()
         initListener()
         refreshView()
@@ -35,13 +40,13 @@ abstract class BaseActivity : BaseRxActivity() {
 
     fun showDialog() {
         if (progress == null) {
-            progress = CustomProgress.build(mActivity, null)
-            progress!!.show()
+            progress = CustomProgress.build(mActivity,"请稍等")
         }
+        progress!!.show()
     }
 
     fun hideDialog() {
-        if (!(progress == null || !progress!!.isShowing)) {
+        if (progress != null && progress!!.isShowing) {
             progress!!.dismiss()
             progress = null
         }
@@ -62,6 +67,7 @@ abstract class BaseActivity : BaseRxActivity() {
     override fun onDestroy() {
         super.onDestroy()
         immersionBar.destroy()
+        ActivityController.removeActivity(mActivity)
     }
 
     override fun finish() {

@@ -18,8 +18,7 @@ interface LoginService {
     /**
      * 登出
      */
-    @FormUrlEncoded
-    @POST("/user/logout")
+    @GET("/api/logout")
     fun  logout():Observable<HttpResult>
     /**
      * 注册

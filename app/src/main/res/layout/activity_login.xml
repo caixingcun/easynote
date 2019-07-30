@@ -2,31 +2,73 @@
 <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:fitsSystemWindows="true"
         android:layout_height="match_parent">
-    <RelativeLayout android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
-        <LinearLayout android:orientation="vertical"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content">
-            <EditText android:layout_width="match_parent"
-                      android:hint="请输入账号"
-                      android:id="@+id/et_account"
-                      android:layout_height="wrap_content"/>
+    <ImageView android:layout_width="match_parent"
+               android:scaleType="centerCrop"
+               android:src="@mipmap/login_bg"
+               android:layout_height="match_parent"/>
+    <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="5dp"
+            android:padding="5dp"
+            app:cardElevation="5dp"
+            app:elevation="5dp"
+            android:layout_height="wrap_content">
 
-            <EditText android:layout_width="match_parent"
-                      android:hint="请输入密码"
-                      android:id="@+id/et_pwd"
-                      android:layout_height="wrap_content"/>
-            <Button android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btn_login"
-                    android:text="登录"/>
-            <Button android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btn_speech"
-                    android:text="语音播报"/>
-        </LinearLayout>
-    </RelativeLayout>
+            <LinearLayout android:orientation="vertical"
+                          android:gravity="center"
+                          android:background="#eeeeee"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:textSize="15sp"
+                          android:id="@+id/tv"
+                          android:textColor="@color/black"
+                          android:text="登录"
+                          android:padding="14dp"
+                          android:layout_height="wrap_content"/>
+                <View android:layout_height="1dp"
+                      android:layout_width="match_parent"
+                      android:background="@color/black"/>
+
+                <EditText android:layout_width="300dp"
+                          android:hint="账号"
+                          android:layout_marginTop="10dp"
+                          android:layout_margin="14dp"
+                          android:background="@drawable/shape_rect"
+                          android:padding="10dp"
+                          android:id="@+id/et_account"
+                          android:layout_height="wrap_content"/>
+
+                <EditText android:layout_width="300dp"
+                          android:hint="密码"
+                          android:layout_marginTop="10dp"
+                          android:id="@+id/et_pwd"
+                          android:layout_margin="14dp"
+                          android:inputType="textPassword"
+                          android:background="@drawable/shape_rect"
+                          android:padding="10dp"
+                          android:layout_height="wrap_content"/>
+
+                <TextView android:layout_width="match_parent"
+                          android:text="没有账号，去注册"
+                          android:textSize="10sp"
+                          android:padding="15dp"
+                          android:id="@+id/tv_change"
+                          android:textColor="@color/grey_text"
+                          android:layout_height="wrap_content"/>
+                <Button android:layout_width="match_parent"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btn"
+                        android:text="立即登入"/>
+
+            </LinearLayout>
+    </android.support.v7.widget.CardView>
 </android.support.design.widget.CoordinatorLayout>

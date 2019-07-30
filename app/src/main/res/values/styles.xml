@@ -17,6 +17,15 @@
         <!--Navigation栏透明-->
         <item name="android:windowTranslucentNavigation">false</item>
     </style>
+    <style name="FullStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/grey_text</item>
+        <!--状态栏透明-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!--Navigation栏透明-->
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
     <style name="Custom_Progress" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>

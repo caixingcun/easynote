@@ -7,4 +7,5 @@
     <color name="title">#000000</color>
     <color name="text">#333333</color>
     <color name="grey_text">#555555</color>
+    <color name="translate">#ffffffff</color>
 </resources>
