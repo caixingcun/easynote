@@ -13,8 +13,9 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 class MainActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.activity_main
 
-    private var adapter: HomeModuleAdapter? = null
-    private var list: MutableList<Pair<String, Int>>? = null
+    private lateinit var adapter: HomeModuleAdapter
+    private lateinit var list: MutableList<Pair<String, Int>>
+
 
 
     override fun initView() {
@@ -27,24 +28,26 @@ class MainActivity : BaseActivity() {
         recycler_view.layoutManager = GridLayoutManager(mActivity, 2)
 
         list = mutableListOf()
-        list!!.add(Pair("日记", R.drawable.ic_note))
-        list!!.add(Pair("记账", R.drawable.ic_in_out_come))
-        list!!.add(Pair("我的", R.drawable.ic_mine))
+        list.add(Pair("日记", R.drawable.ic_note))
+        list.add(Pair("记账", R.drawable.ic_in_out_come))
+        list.add(Pair("可转债",R.drawable.ic_zhaiquan))
+        list.add(Pair("我的", R.drawable.ic_mine))
         adapter = HomeModuleAdapter(R.layout.item_main_module, list)
-        adapter!!.onItemClickListener =
+        adapter.onItemClickListener =
             BaseQuickAdapter.OnItemClickListener { _, _, position ->
-                when (list!![position].first) {
+                when (list[position].first) {
                     "日记" -> startActivity(Intent(mActivity, NoteListActivity::class.java))
                     "记账" -> startActivity(Intent(mActivity, InOutComeActivity::class.java))
+                    "可转债" -> startActivity(Intent(mActivity,ZaiQuanActivity::class.java))
                     "我的" -> startActivity(Intent(mActivity, MineActivity::class.java))
                     else -> {
                     }
                 }
-
             }
 
         recycler_view.adapter = adapter
 
     }
+
 
 }

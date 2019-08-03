@@ -20,9 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity"
-        android:theme="@style/FullStyle"
-         android:screenOrientation="portrait"
-        />
+                  android:theme="@style/FullStyle"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".ui.MainActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.NoteListActivity"
@@ -33,6 +32,9 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.InOutComeActivity"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".ui.ZaiQuanActivity"
+                  android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
