@@ -68,7 +68,14 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/btn"
                         android:text="立即登入"/>
-
+                <TextView android:layout_width="match_parent"
+                          android:text="游客进入"
+                          android:textSize="10sp"
+                          android:padding="10dp"
+                          android:gravity="right"
+                          android:id="@+id/tv_no_auth"
+                          android:textColor="@color/grey_text"
+                          android:layout_height="wrap_content"/>
             </LinearLayout>
     </android.support.v7.widget.CardView>
 </android.support.design.widget.CoordinatorLayout>

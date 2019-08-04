@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">EasyNoteApp</string>
+
+    <string-array name="zhuanzhai_types">
+        <item>进攻型可转债</item>
+        <item>平衡型可转债</item>
+        <item>防御型可转债</item>
+    </string-array>
+
+    <string-array name="zhuanzhai_qualitys">
+        <item>AA</item>
+        <item>AA+</item>
+        <item>AAA</item>
+        <item>A+</item>
+    </string-array>
+
 </resources>

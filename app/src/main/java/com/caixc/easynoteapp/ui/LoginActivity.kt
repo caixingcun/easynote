@@ -33,6 +33,11 @@ class LoginActivity : BaseActivity() {
                     card_view.visibility = View.VISIBLE
                 }
         }
+        tv_no_auth.setOnClickListener {
+            startActivity(Intent(mActivity,MainActivity::class.java))
+            finish()
+        }
+
         btn.setOnClickListener {
             var account: String = et_account.text.toString().trim()
             val password = et_pwd.text.toString().trim()
@@ -98,6 +103,10 @@ class LoginActivity : BaseActivity() {
             tv_change.text = "有账号，去登录！"
             btn.text = "立即注册"
         }
+
+    }
+
+    override fun initView() {
 
     }
 

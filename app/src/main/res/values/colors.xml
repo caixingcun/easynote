@@ -8,4 +8,7 @@
     <color name="text">#333333</color>
     <color name="grey_text">#555555</color>
     <color name="translate">#ffffffff</color>
+    <color  name="green">#4DB361</color>
+    <color  name="blue">#3C3CC4</color>
+    <color  name="yellow">#DD9222</color>
 </resources>
