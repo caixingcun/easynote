@@ -24,15 +24,7 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.MainActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".ui.NoteListActivity"
-                  android:screenOrientation="portrait"/>
         <activity android:name=".ui.NoteDetailActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".ui.MineActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".ui.InOutComeActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".ui.ZaiQuanActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.ZaiQuanSelectActivity"
         android:screenOrientation="portrait"/>

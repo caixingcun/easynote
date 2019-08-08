@@ -1,9 +1,11 @@
-package com.caixc.easynoteapp.ui
+package com.caixc.easynoteapp.ui.fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
 import android.view.View
@@ -11,34 +13,32 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.adapter.ZaiQuanAdapter
-import com.caixc.easynoteapp.base.BaseActivity
+import com.caixc.easynoteapp.base.BaseFragment
 import com.caixc.easynoteapp.bean.KeyValueBean
 import com.caixc.easynoteapp.bean.ZaiQuanBean
+import com.caixc.easynoteapp.ui.ZaiQuanSelectActivity
 import com.caixc.easynoteapp.util.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.google.gson.Gson
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
-import kotlinx.android.synthetic.main.activity_main.recycler_view
-import kotlinx.android.synthetic.main.activity_note_list.refresh_layout
-import kotlinx.android.synthetic.main.activity_zhaiquan.*
+import kotlinx.android.synthetic.main.fragment_zhaiquan.*
+import kotlinx.android.synthetic.main.fragment_zhaiquan.recycler_view
+import kotlinx.android.synthetic.main.fragment_zhaiquan.refresh_layout
 import kotlinx.android.synthetic.main.include_toolbar.*
 import org.json.JSONArray
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStream
 
-import android.net.Uri
-import android.support.v7.app.AlertDialog
-import com.caixc.easynoteapp.R
+class ZaiQuanFragment : BaseFragment() {
+    override fun setLayout(): Int  = R.layout.fragment_zhaiquan
 
-
-class ZaiQuanActivity : BaseActivity() {
     companion object {
         const val REQUEST_CODE = 10001
     }
 
-    override fun setLayout(): Int = R.layout.activity_zhaiquan
     var list = mutableListOf<ZaiQuanBean>()
     val listTemplate = mutableListOf<ZaiQuanBean>()
     private lateinit var adapter: ZaiQuanAdapter
@@ -46,6 +46,7 @@ class ZaiQuanActivity : BaseActivity() {
         tv_title.text = "可转债"
         tv_right.text = "筛选"
         tv_right.visibility = View.VISIBLE
+        iv_left.visibility = View.INVISIBLE
         initRecyclerView()
         initRefreshLayout()
         initWebView()
@@ -54,15 +55,14 @@ class ZaiQuanActivity : BaseActivity() {
 
     override fun initListener() {
         tv_right.setOnClickListener {
-            var intent = Intent(mActivity, ZaiQuanSelectActivity::class.java)
+            var intent = Intent(context, ZaiQuanSelectActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE)
         }
-        iv_left.setOnClickListener { finish() }
     }
 
     private val jsquery: String
         get() {
-            val jsQuery = "javascript:" + getJsQueryStr(this, "getyisilu.js")
+            val jsQuery = "javascript:" + getJsQueryStr(context!!, "getyisilu.js")
             return jsQuery
         }
 
@@ -76,7 +76,7 @@ class ZaiQuanActivity : BaseActivity() {
         web_view.addJavascriptInterface(object : JsCallback {
             @JavascriptInterface
             override fun onCallback(content: String) {
-                runOnUiThread {
+                getBaseActivity().runOnUiThread {
                     LogUtils.debug("$content---")
                     listTemplate.clear()
                     val jsonArray = JSONArray(content)
@@ -120,7 +120,7 @@ class ZaiQuanActivity : BaseActivity() {
 
     private fun initRefreshLayout() {
         refresh_layout.setEnableRefresh(true)
-        refresh_layout.setRefreshHeader(ClassicsHeader(mActivity))
+        refresh_layout.setRefreshHeader(ClassicsHeader(context))
         refresh_layout.setOnRefreshListener {
             it.finishRefresh()
             //        web_view.evaluateJavascript(jsquery,null)
@@ -128,13 +128,13 @@ class ZaiQuanActivity : BaseActivity() {
     }
 
     private fun initRecyclerView() {
-        recycler_view.layoutManager = LinearLayoutManager(mActivity)
+        recycler_view.layoutManager = LinearLayoutManager(context)
 
         adapter = ZaiQuanAdapter(R.layout.item_zaiquan, list)
         adapter.onItemClickListener =
-                BaseQuickAdapter.OnItemClickListener { _, _, position ->
-                    showList(position)
-                }
+            BaseQuickAdapter.OnItemClickListener { _, _, position ->
+                showList(position)
+            }
 
         recycler_view.adapter = adapter
 
@@ -143,7 +143,7 @@ class ZaiQuanActivity : BaseActivity() {
     private fun showList(position: Int) {
 
         val items = arrayOf("雪球网看历史", "集思录看详情")
-        var builder = AlertDialog.Builder(this)
+        var builder = AlertDialog.Builder(context!!)
             .setTitle("")
             .setItems(items) { dialog, which ->
                 dialog.dismiss()
@@ -328,4 +328,5 @@ class ZaiQuanActivity : BaseActivity() {
         }
         return false
     }
+
 }

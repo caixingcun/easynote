@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="日记"
+          android:id="@+id/tab_note"
+          android:icon="@drawable/ic_note"/>
+
+    <item android:title="记账"
+          android:id="@+id/tab_account"
+          android:icon="@drawable/ic_in_out_come"/>
+
+    <item android:title="转债"
+          android:id="@+id/tab_money"
+          android:icon="@drawable/ic_zhaiquan"/>
+
+    <item android:title="我的"
+          android:id="@+id/tab_mine"
+          android:icon="@drawable/ic_mine"/>
+</menu>

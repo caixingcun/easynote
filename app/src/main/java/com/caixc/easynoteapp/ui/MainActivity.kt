@@ -1,53 +1,58 @@
 package com.caixc.easynoteapp.ui
 
-import android.content.Intent
-import android.support.v7.widget.GridLayoutManager
-import android.view.View
 import com.caixc.easynoteapp.R
-import com.caixc.easynoteapp.adapter.HomeModuleAdapter
 import com.caixc.easynoteapp.base.BaseActivity
-import com.chad.library.adapter.base.BaseQuickAdapter
+import com.caixc.easynoteapp.base.BaseFragment
+import com.caixc.easynoteapp.ui.fragment.InOutComeFragment
+import com.caixc.easynoteapp.ui.fragment.MineFragment
+import com.caixc.easynoteapp.ui.fragment.NoteFragment
+import com.caixc.easynoteapp.ui.fragment.ZaiQuanFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 
 class MainActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.activity_main
 
-    private lateinit var adapter: HomeModuleAdapter
-    private lateinit var list: MutableList<Pair<String, Int>>
-
-
+     var fragments: MutableList<BaseFragment> = mutableListOf()
 
     override fun initView() {
-        iv_left.visibility = View.INVISIBLE
-        tv_title.text  = "小工具"
-        initRecyclerView()
-    }
+        fragments.add(NoteFragment())
+        fragments.add(InOutComeFragment())
+        fragments.add(ZaiQuanFragment())
+        fragments.add(MineFragment())
 
-    private fun initRecyclerView() {
-        recycler_view.layoutManager = GridLayoutManager(mActivity, 2)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fl, fragments[0])
+            .add(R.id.fl, fragments[1])
+            .add(R.id.fl, fragments[2])
+            .add(R.id.fl, fragments[3])
+            .hide(fragments[0])
+            .hide(fragments[1])
+            .hide(fragments[2])
+            .hide(fragments[3])
+            .show(fragments[0])
+            .commit()
 
-        list = mutableListOf()
-        list.add(Pair("日记", R.drawable.ic_note))
-        list.add(Pair("记账", R.drawable.ic_in_out_come))
-        list.add(Pair("可转债",R.drawable.ic_zhaiquan))
-        list.add(Pair("我的", R.drawable.ic_mine))
-        adapter = HomeModuleAdapter(R.layout.item_main_module, list)
-        adapter.onItemClickListener =
-            BaseQuickAdapter.OnItemClickListener { _, _, position ->
-                when (list[position].first) {
-                    "日记" -> startActivity(Intent(mActivity, NoteListActivity::class.java))
-                    "记账" -> startActivity(Intent(mActivity, InOutComeActivity::class.java))
-                    "可转债" -> startActivity(Intent(mActivity,ZaiQuanActivity::class.java))
-                    "我的" -> startActivity(Intent(mActivity, MineActivity::class.java))
-                    else -> {
-                    }
-                }
+        navigation_view.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.tab_note -> switchFragment(0)
+                R.id.tab_account -> switchFragment(1)
+                R.id.tab_money -> switchFragment(2)
+                R.id.tab_mine -> switchFragment(3)
             }
+            true
+        }
 
-        recycler_view.adapter = adapter
 
     }
 
+    private fun switchFragment(pos: Int) {
+        supportFragmentManager.beginTransaction()
+            .hide(fragments[0])
+            .hide(fragments[1])
+            .hide(fragments[2])
+            .hide(fragments[3])
+            .show(fragments[pos])
+            .commit()
 
+    }
 }
