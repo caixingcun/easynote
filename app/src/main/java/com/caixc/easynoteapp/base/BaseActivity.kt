@@ -8,7 +8,7 @@ import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.widget.CustomProgress
 import com.gyf.barlibrary.ImmersionBar
 import com.caixc.easynoteapp.util.ActivityController
-
+import com.caixc.easynoteapp.util.LogUtils
 
 
 abstract class BaseActivity : BaseRxActivity() {
@@ -20,6 +20,7 @@ abstract class BaseActivity : BaseRxActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(setLayout())
+        LogUtils.debug("当前界面："+javaClass.canonicalName)
         initImmersionBar()
         mActivity = this
         ActivityController.addActivity(mActivity)
@@ -27,7 +28,6 @@ abstract class BaseActivity : BaseRxActivity() {
         initListener()
         refreshView()
         getData()
-
     }
 
     open fun initListener() {}

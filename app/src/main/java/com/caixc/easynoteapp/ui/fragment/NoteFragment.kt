@@ -1,6 +1,7 @@
 package com.caixc.easynoteapp.ui.fragment
 
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.View

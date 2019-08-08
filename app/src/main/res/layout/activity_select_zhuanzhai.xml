@@ -11,16 +11,17 @@
     </android.support.design.widget.AppBarLayout>
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="vertical"
-                  android:background="@color/white"
+                  android:background="@color/grey_text"
                   app:layout_behavior="@string/appbar_scrolling_view_behavior"
                   android:layout_height="match_parent">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content"
                       android:text="转债类型:"
                       android:textSize="16sp"
                       android:layout_marginLeft="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
             <Spinner android:layout_width="match_parent"
                      android:id="@+id/spinner_type"
@@ -30,13 +31,14 @@
                      android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content"
-                      android:text="转债品级:"
+                      android:text="转债品级："
                       android:textSize="16sp"
                       android:layout_marginLeft="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
             <Spinner android:layout_width="0dp"
                      android:layout_weight="1"
@@ -53,13 +55,13 @@
                       android:textSize="16sp"
                       android:layout_marginRight="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
         </LinearLayout>
         <View android:layout_width="match_parent" android:layout_height="1px"
               android:layout_marginLeft="115dp"
               android:layout_marginRight="105dp"
-              android:background="@color/black"/>
+              android:background="@color/white"/>
         <LinearLayout android:layout_width="match_parent"
                       android:visibility="gone"
                       android:layout_height="wrap_content">
@@ -68,12 +70,14 @@
                       android:textSize="16sp"
                       android:layout_marginLeft="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
             <EditText android:layout_width="0dp"
                       android:layout_weight="1"
                       android:hint="100-105"
                       android:text="100-105"
+                      android:textColorHint="@color/white"
+                      android:textColor="@color/white"
                       android:layout_marginLeft="28dp"
                       android:id="@+id/et_price"
                       android:layout_height="wrap_content"/>
@@ -81,22 +85,23 @@
                       android:text="元 及以下"
                       android:textSize="16sp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
         </LinearLayout>
 
-
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content"
                       android:text="转债溢价:"
                       android:textSize="16sp"
                       android:layout_marginLeft="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
             <EditText android:layout_width="0dp"
                       android:layout_weight="1"
                       android:hint="例 2"
+                      android:textColor="@color/white"
                       android:id="@+id/et_premium"
                       android:text="-2"
                       android:layout_marginLeft="28dp"
@@ -107,17 +112,18 @@
                       android:textSize="16sp"
                       android:layout_marginRight="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content"
                       android:text="到期年化:"
                       android:textSize="16sp"
                       android:layout_marginLeft="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
             <EditText android:layout_width="0dp"
                       android:layout_weight="1"
@@ -125,6 +131,7 @@
                       android:contentDescription="到期年华"
                       android:id="@+id/et_annul"
                       android:hint="例 2"
+                      android:textColor="@color/white"
                       android:layout_marginLeft="28dp"
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="100dp"
@@ -133,22 +140,24 @@
                       android:textSize="16sp"
                       android:layout_marginRight="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content"
                       android:text="到期年限:"
                       android:textSize="16sp"
                       android:layout_marginLeft="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
             <EditText android:layout_width="0dp"
                       android:layout_weight="1"
                       android:inputType="numberDecimal"
                       android:text="5"
                       android:id="@+id/et_year"
+                      android:textColor="@color/white"
                       android:hint="例 5"
                       android:layout_marginLeft="28dp"
                       android:layout_height="wrap_content"/>
@@ -158,15 +167,20 @@
                       android:textSize="16sp"
                       android:layout_marginRight="14dp"
                       android:layout_gravity="center_vertical"
-                      android:textColor="@color/black"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
         </LinearLayout>
-        <Button android:layout_width="match_parent"
+    </LinearLayout>
+        <TextView
+                android:layout_width="match_parent"
                 android:layout_margin="20dp"
-                android:padding="20dp"
+                android:padding="14dp"
+                android:textColor="@color/white"
+                android:layout_gravity="bottom"
+                android:gravity="center_horizontal"
                 android:text="查询"
+                android:background="@drawable/shape_rect1"
                 android:id="@+id/btn_query"
                 android:layout_height="wrap_content"/>
-    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

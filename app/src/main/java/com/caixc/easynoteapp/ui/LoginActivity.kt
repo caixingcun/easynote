@@ -2,7 +2,6 @@ package com.caixc.easynoteapp.ui
 
 import android.content.Intent
 import android.text.TextUtils
-import android.view.View
 import com.caixc.easynoteapp.base.BaseActivity
 import com.caixc.easynoteapp.base.Preference
 import com.caixc.easynoteapp.bean.LoginResultBean
@@ -24,13 +23,12 @@ class LoginActivity : BaseActivity() {
     override fun initListener() {
         tv_change.setOnClickListener {
             isLogin = !isLogin
-            card_view.visibility = View.INVISIBLE
             refreshView()
             Observable.interval(300,300, TimeUnit.MILLISECONDS)
                 .take(1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    card_view.visibility = View.VISIBLE
+
                 }
         }
         tv_no_auth.setOnClickListener {
