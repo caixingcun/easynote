@@ -12,6 +12,7 @@ import com.caixc.easynoteapp.net.LoginService
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
 import com.caixc.easynoteapp.ui.LoginActivity
+import com.caixc.easynoteapp.ui.activity.ChangePwdActivity
 import com.caixc.easynoteapp.util.ActivityController
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,7 +30,14 @@ class MineFragment : BaseFragment() {
         btn_logout.setOnClickListener {
             logout()
         }
+        tv_change_pwd.setOnClickListener {
+            startActivity(Intent(context, ChangePwdActivity::class.java))
+        }
     }
+
+
+
+
 
     private fun logout() {
         getBaseActivity().showDialog()
