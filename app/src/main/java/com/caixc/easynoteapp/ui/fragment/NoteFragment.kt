@@ -1,7 +1,6 @@
 package com.caixc.easynoteapp.ui.fragment
 
 import android.content.Intent
-import android.graphics.Color
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.View
@@ -11,7 +10,7 @@ import com.caixc.easynoteapp.base.BaseFragment
 import com.caixc.easynoteapp.bean.NoteBean
 import com.caixc.easynoteapp.global.Urls
 import com.caixc.easynoteapp.net.MyDefaultObserver
-import com.caixc.easynoteapp.net.NoteService
+import com.caixc.easynoteapp.net.service.NoteService
 import com.caixc.easynoteapp.net.RetrofitClient
 import com.caixc.easynoteapp.ui.NoteDetailActivity
 import com.caixc.easynoteapp.util.LogUtils

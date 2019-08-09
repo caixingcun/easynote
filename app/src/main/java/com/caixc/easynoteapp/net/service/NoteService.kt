@@ -1,4 +1,4 @@
-package com.caixc.easynoteapp.net
+package com.caixc.easynoteapp.net.service
 
 import com.caixc.easynoteapp.bean.HttpErrorBean
 import com.caixc.easynoteapp.bean.HttpResult

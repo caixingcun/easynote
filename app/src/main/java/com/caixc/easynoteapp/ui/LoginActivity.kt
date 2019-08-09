@@ -9,7 +9,7 @@ import com.caixc.easynoteapp.global.Constants
 import com.caixc.easynoteapp.global.Urls
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
-import com.caixc.easynoteapp.net.LoginService
+import com.caixc.easynoteapp.net.service.LoginService
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

@@ -8,11 +8,12 @@ import com.caixc.easynoteapp.base.Preference
 import com.caixc.easynoteapp.bean.HttpResult
 import com.caixc.easynoteapp.global.Constants
 import com.caixc.easynoteapp.global.Urls
-import com.caixc.easynoteapp.net.LoginService
+import com.caixc.easynoteapp.net.service.LoginService
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
 import com.caixc.easynoteapp.ui.LoginActivity
 import com.caixc.easynoteapp.ui.activity.ChangePwdActivity
+import com.caixc.easynoteapp.ui.activity.FeedBackActivity
 import com.caixc.easynoteapp.util.ActivityController
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -32,6 +33,9 @@ class MineFragment : BaseFragment() {
         }
         tv_change_pwd.setOnClickListener {
             startActivity(Intent(context, ChangePwdActivity::class.java))
+        }
+        tv_feed_back.setOnClickListener {
+            startActivity(Intent(context, FeedBackActivity::class.java))
         }
     }
 

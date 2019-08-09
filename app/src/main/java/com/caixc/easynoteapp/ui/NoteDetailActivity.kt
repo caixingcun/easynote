@@ -9,7 +9,7 @@ import com.caixc.easynoteapp.bean.NoteBean
 import com.caixc.easynoteapp.global.Urls
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
-import com.caixc.easynoteapp.net.NoteService
+import com.caixc.easynoteapp.net.service.NoteService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_note_detail.*
