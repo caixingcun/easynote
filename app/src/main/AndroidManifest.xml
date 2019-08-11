@@ -32,6 +32,8 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.FeedBackActivity"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.InOutComeDetailActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,8 +1,10 @@
 package com.caixc.easynoteapp.bean
 
+import java.io.Serializable
+
 data class NoteBean(var id: Int, var content: String, var time: String)
 
-data class InOutComeBean(var create_time: String, var money: Double, var reason: String, var is_in_come: Boolean)
+data class InOutComeBean(var create_time: String, var money: Double, var reason: String,var i_id:Long) : Serializable
 
 data class KeyValueBean(var name:String,var value:String)
 class ZaiQuanBean {

@@ -44,6 +44,7 @@ class LoginActivity : BaseActivity() {
                 return@setOnClickListener
             }
             if (isLogin) {
+                showDialog()
                 RetrofitClient().getInstance(Urls.HOST)
                     .create(LoginService::class.java)
                     .login(account, password)
@@ -51,6 +52,7 @@ class LoginActivity : BaseActivity() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : MyDefaultObserver<LoginResultBean>(mActivity) {
                         override fun onNext(t: LoginResultBean) {
+                            hideDialog()
                             Preference().setValue(Constants.TOKEN, t.token)
                             startActivity(Intent(mActivity, MainActivity::class.java))
                             finish()
@@ -58,6 +60,7 @@ class LoginActivity : BaseActivity() {
                     })
 
             } else {
+                showDialog()
                 RetrofitClient().getInstance(Urls.HOST)
                     .create(LoginService::class.java)
                     .register(account, password)
@@ -65,6 +68,7 @@ class LoginActivity : BaseActivity() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : MyDefaultObserver<LoginResultBean>(mActivity) {
                         override fun onNext(t: LoginResultBean) {
+                            hideDialog()
                             Preference().setValue(Constants.TOKEN, t.token)
                             startActivity(Intent(mActivity, MainActivity::class.java))
                             finish()

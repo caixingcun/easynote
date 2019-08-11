@@ -27,7 +27,7 @@ class NoteFragment : BaseFragment() {
     override fun setLayout(): Int  = R.layout.fragment_note_list
 
     private var list: MutableList<NoteBean> = ArrayList()
-
+    lateinit var adapter: NoteAdapter
     override fun initView() {
         tv_title.text = "日记本"
         iv_right.visibility = View.VISIBLE
@@ -65,7 +65,7 @@ class NoteFragment : BaseFragment() {
         }
     }
 
-    lateinit var adapter: NoteAdapter
+
 
 
     private fun initRecyclerView() {
