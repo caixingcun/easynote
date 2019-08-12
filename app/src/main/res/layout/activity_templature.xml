@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <include layout="@layout/include_toolbar"/>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
+                  android:layout_height="match_parent">
+        <com.zhy.view.flowlayout.TagFlowLayout
+                android:layout_width="match_parent"
+                android:id="@+id/tag_flow_layout"
+                android:layout_height="wrap_content"/>
+        <EditText style="@style/edit_style"
+                  android:hint="场内代码"
+                  android:digits="0123456789-"
+                  android:id="@+id/et_code_in"/>
+        <EditText style="@style/edit_style"
+                  android:hint="场外代码"
+                  android:digits="0123456789-"
+                  android:id="@+id/et_code_out"/>
+        <EditText style="@style/edit_style"
+                  android:hint="请输入长投温度"
+                  android:digits="0123456789."
+                  android:id="@+id/et_temperature"/>
+        <EditText style="@style/edit_style"
+                  android:hint="请输入日期"
+                  android:id="@+id/et_date"/>
+        <Button style="@style/btn_style"
+            android:text="提交"
+                android:id="@+id/btn_submit"/>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

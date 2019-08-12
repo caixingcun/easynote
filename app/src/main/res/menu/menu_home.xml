@@ -7,6 +7,9 @@
     <item android:title="记账"
           android:id="@+id/tab_account"
           android:icon="@drawable/ic_in_out_come"/>
+    <item android:title="温度"
+          android:id="@+id/tab_temp"
+        android:icon="@drawable/ic_temp"/>
 
     <item android:title="转债"
           android:id="@+id/tab_money"

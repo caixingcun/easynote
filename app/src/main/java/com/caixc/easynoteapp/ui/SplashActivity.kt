@@ -14,7 +14,7 @@ class SplashActivity : BaseActivity() {
     override fun getData() {
 
         val token = Preference().getValue("token", "")
-        Observable.interval(300, TimeUnit.MILLISECONDS)
+        Observable.interval(1, TimeUnit.MILLISECONDS)
             .take(1)
             .subscribe {
                 if (token!!.isNotEmpty()) {

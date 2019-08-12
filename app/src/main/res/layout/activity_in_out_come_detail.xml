@@ -15,54 +15,27 @@
                   android:orientation="vertical"
                   android:layout_height="match_parent"
                   app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <EditText android:layout_width="match_parent"
-                  android:gravity="start|top"
+
+        <EditText style="@style/edit_style"
                   android:id="@+id/et_reason"
-                  android:layout_margin="14dp"
-                  android:padding="14dp"
-                  android:background="@drawable/shape_rect_bg"
-                  android:textColorHint="@color/colorPrimaryDark"
-                  android:textColor="@color/white"
-                  android:hint="收支原因"
+                  android:hint="收支原因"/>
+        <EditText
+                android:id="@+id/et_money"
+                style="@style/edit_style"
+                android:digits="0123456789.-"
+                android:hint="请输入金额，支出为 - "/>
 
-                  android:layout_height="wrap_content"/>
-        <EditText android:layout_width="match_parent"
-                  android:gravity="start|top"
-                  android:id="@+id/et_money"
-                  android:layout_margin="14dp"
-                  android:padding="14dp"
-                  android:digits="0123456789.-"
-                  android:background="@drawable/shape_rect_bg"
-                  android:textColorHint="@color/colorPrimaryDark"
-                  android:textColor="@color/white"
-                  android:hint="请输入金额，支出为 - "
-                  android:layout_height="wrap_content"/>
-
-        <EditText android:layout_width="match_parent"
-                  android:gravity="start|top"
-                  android:id="@+id/et_date"
-                  android:layout_margin="14dp"
-                  android:padding="14dp"
-                  android:digits="0123456789 -:"
-                  android:background="@drawable/shape_rect_bg"
-                  android:textColorHint="@color/colorPrimaryDark"
-                  android:textColor="@color/white"
-                  android:hint="例：2019-08-11 12:35"
-                  android:layout_height="wrap_content"/>
+        <EditText
+                android:id="@+id/et_date"
+                android:digits="0123456789 -:"
+                android:hint="例：2019-08-11 12:35"
+                style="@style/edit_style"/>
 
 
-        <TextView android:layout_width="match_parent"
-                  android:text="保存"
-                  android:id="@+id/btn_save"
-                  android:textColor="@color/white"
-                  android:textSize="16sp"
-                  android:layout_margin="14dp"
-                  android:padding="14dp"
-                  android:gravity="center_horizontal"
-                  android:background="@drawable/shape_rect1"
-                  android:layout_marginLeft="20dp"
-                  android:layout_marginRight="20dp"
-                  android:layout_height="wrap_content"/>
+        <TextView
+                android:text="保存"
+                android:id="@+id/btn_save"
+                style="@style/btn_style"/>
     </LinearLayout>
 
 

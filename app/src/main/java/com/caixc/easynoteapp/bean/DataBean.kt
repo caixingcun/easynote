@@ -33,3 +33,13 @@ class ZaiQuanBean {
  * ytm_rt_tax 到期税后收益
  *
  */
+
+class TemplatureBean(
+    val a_id: Int,
+    val code_in: String,
+    val code_out: String,
+    val create_time: String,
+    val index_type: String,
+    val templature: Double
+)
+

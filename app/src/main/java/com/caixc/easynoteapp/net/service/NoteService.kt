@@ -1,8 +1,6 @@
 package com.caixc.easynoteapp.net.service
 
-import com.caixc.easynoteapp.bean.HttpErrorBean
 import com.caixc.easynoteapp.bean.HttpResult
-import com.caixc.easynoteapp.bean.LoginResultBean
 import com.caixc.easynoteapp.bean.NoteBean
 import io.reactivex.Observable
 import retrofit2.http.*
