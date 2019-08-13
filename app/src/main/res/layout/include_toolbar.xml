@@ -42,7 +42,7 @@
                   android:textSize="14sp"
                   android:visibility="invisible"
                   android:id="@+id/tv_right"
-                  android:padding="10dp"
+                  android:padding="14dp"
                   android:layout_height="wrap_content"/>
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

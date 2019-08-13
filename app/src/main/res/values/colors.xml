@@ -10,8 +10,9 @@
     <color name="grey_text">#555555</color>
     <color name="translate">#ffffffff</color>
     <color  name="green">#4DB361</color>
-    <color  name="blue">#3C3CC4</color>
-    <color  name="yellow">#DD9222</color>
+    <color  name="blue">#1EA5EE</color>
+    <color  name="yellow">#FFD000</color>
+    <color  name="orange">#FD8D15</color>
     <color name="line_light">#EAEAEA</color>
     <color name="dark">#353535</color>
     <color name="color_normal">#33000000</color>

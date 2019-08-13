@@ -65,5 +65,6 @@ dependencies {
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     //图表库
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-
+    //bus
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }

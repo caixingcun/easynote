@@ -2,6 +2,7 @@ package com.caixc.easynoteapp.ui
 
 import android.content.Intent
 import android.text.TextUtils
+import android.view.View
 import com.caixc.easynoteapp.base.BaseActivity
 import com.caixc.easynoteapp.base.Preference
 import com.caixc.easynoteapp.bean.LoginResultBean
@@ -13,7 +14,13 @@ import com.caixc.easynoteapp.net.service.LoginService
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_change_pwd.*
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.btn
+import kotlinx.android.synthetic.main.activity_login.et_account
+import kotlinx.android.synthetic.main.activity_login.et_pwd
+import kotlinx.android.synthetic.main.activity_login.tv
+import kotlinx.android.synthetic.main.activity_login.tv_no_auth
 import java.util.concurrent.TimeUnit
 
 
@@ -110,6 +117,7 @@ class LoginActivity : BaseActivity() {
 
     override fun initView() {
 
+        tv_no_auth.visibility = View.INVISIBLE
     }
 
     override fun setLayout(): Int = com.caixc.easynoteapp.R.layout.activity_login

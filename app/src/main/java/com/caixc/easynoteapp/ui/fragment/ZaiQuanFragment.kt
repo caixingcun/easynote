@@ -77,6 +77,7 @@ class ZaiQuanFragment : BaseFragment() {
             @JavascriptInterface
             override fun onCallback(content: String) {
                 getBaseActivity().runOnUiThread {
+                    getBaseActivity().hideDialog()
                     LogUtils.debug("$content---")
                     listTemplate.clear()
                     val jsonArray = JSONArray(content)
@@ -113,6 +114,7 @@ class ZaiQuanFragment : BaseFragment() {
         }, "Android")
         web_view.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
+                getBaseActivity().showDialog()
                 view?.evaluateJavascript(jsQuery) { s -> LogUtils.debug("$s evaluateJavascript") }
             }
         }

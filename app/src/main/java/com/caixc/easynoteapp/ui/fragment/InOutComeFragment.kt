@@ -8,16 +8,12 @@ import android.text.TextUtils
 import android.view.View
 import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.adapter.InOutComeAdapter
-import com.caixc.easynoteapp.adapter.NoteAdapter
 import com.caixc.easynoteapp.base.BaseFragment
 import com.caixc.easynoteapp.bean.InOutComeBean
-import com.caixc.easynoteapp.bean.NoteBean
 import com.caixc.easynoteapp.global.Urls
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
 import com.caixc.easynoteapp.net.service.InOutComeService
-import com.caixc.easynoteapp.net.service.NoteService
-import com.caixc.easynoteapp.ui.NoteDetailActivity
 import com.caixc.easynoteapp.ui.activity.InOutComeDetailActivity
 import com.caixc.easynoteapp.util.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter

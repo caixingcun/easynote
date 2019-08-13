@@ -1,6 +1,7 @@
 package com.caixc.easynoteapp.ui.fragment
 
 import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.View
@@ -8,6 +9,7 @@ import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.adapter.NoteAdapter
 import com.caixc.easynoteapp.base.BaseFragment
 import com.caixc.easynoteapp.bean.NoteBean
+import com.caixc.easynoteapp.event.NoteEvent
 import com.caixc.easynoteapp.global.Urls
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.service.NoteService
@@ -22,9 +24,12 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_note_list.*
 import kotlinx.android.synthetic.main.fragment_note_list.recycler_view
 import kotlinx.android.synthetic.main.include_toolbar.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class NoteFragment : BaseFragment() {
-    override fun setLayout(): Int  = R.layout.fragment_note_list
+    override fun setLayout(): Int = R.layout.fragment_note_list
 
     private var list: MutableList<NoteBean> = ArrayList()
     lateinit var adapter: NoteAdapter
@@ -33,7 +38,7 @@ class NoteFragment : BaseFragment() {
         iv_right.visibility = View.VISIBLE
 
         iv_left.visibility = View.INVISIBLE
-        iv_right.setOnClickListener{
+        iv_right.setOnClickListener {
             startActivity(Intent(context, NoteDetailActivity::class.java))
         }
 
@@ -43,7 +48,7 @@ class NoteFragment : BaseFragment() {
             }
 
             override fun onQueryTextSubmit(text: String?): Boolean {
-                var listTemplate =   list.filter {
+                var listTemplate = list.filter {
                     text.toString() in it.content
                 }
 
@@ -57,15 +62,30 @@ class NoteFragment : BaseFragment() {
         initRefreshLayout()
     }
 
-    private fun initRefreshLayout() {
-        refresh_layout.setEnableRefresh(true)
-        refresh_layout.setRefreshHeader(ClassicsHeader(context))
-        refresh_layout.setOnRefreshListener{
-            getData()
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        EventBus.getDefault().register(this)
+
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun eventListener(e: NoteEvent) {
+        getData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
+    private fun initRefreshLayout() {
+        refresh_layout.setEnableRefresh(true)
+        refresh_layout.setRefreshHeader(ClassicsHeader(context))
+        refresh_layout.setOnRefreshListener {
+            getData()
+        }
+    }
 
 
     private fun initRecyclerView() {
@@ -87,7 +107,7 @@ class NoteFragment : BaseFragment() {
                 true
             }
 
-        adapter.setEmptyView(R.layout.item_empty,recycler_view)
+        adapter.setEmptyView(R.layout.item_empty, recycler_view)
     }
 
     override fun getData() {

@@ -6,6 +6,7 @@ import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.base.BaseActivity
 import com.caixc.easynoteapp.bean.HttpResult
 import com.caixc.easynoteapp.bean.NoteBean
+import com.caixc.easynoteapp.event.NoteEvent
 import com.caixc.easynoteapp.global.Urls
 import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
@@ -14,6 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_note_detail.*
 import kotlinx.android.synthetic.main.include_toolbar.*
+import org.greenrobot.eventbus.EventBus
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,6 +59,7 @@ class NoteDetailActivity : BaseActivity() {
             .subscribe(object : MyDefaultObserver<HttpResult>(mActivity) {
                 override fun onNext(bean: HttpResult) {
                     toast(bean.msg)
+                    EventBus.getDefault().post(NoteEvent())
                     finish()
                 }
             })
@@ -75,6 +78,7 @@ class NoteDetailActivity : BaseActivity() {
             .subscribe(object : MyDefaultObserver<HttpResult>(mActivity) {
                 override fun onNext(bean: HttpResult) {
                     toast(bean.msg)
+                    EventBus.getDefault().post(NoteEvent())
                     finish()
                 }
             })

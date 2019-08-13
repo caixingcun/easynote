@@ -3,8 +3,12 @@ package com.caixc.easynoteapp.ui
 import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.base.BaseActivity
 import com.caixc.easynoteapp.base.BaseFragment
+import com.caixc.easynoteapp.bean.TemplatureBean
 import com.caixc.easynoteapp.ui.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.activity_main
@@ -43,8 +47,8 @@ class MainActivity : BaseActivity() {
             true
         }
 
-
     }
+
 
     private fun switchFragment(pos: Int) {
         supportFragmentManager.beginTransaction()
