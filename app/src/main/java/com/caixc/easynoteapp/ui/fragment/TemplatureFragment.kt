@@ -14,6 +14,7 @@ import com.caixc.easynoteapp.net.MyDefaultObserver
 import com.caixc.easynoteapp.net.RetrofitClient
 import com.caixc.easynoteapp.net.service.TemperatureService
 import com.caixc.easynoteapp.ui.activity.TemplatureActivity
+import com.caixc.easynoteapp.ui.activity.TemplatureImmediateActivity
 import com.caixc.easynoteapp.ui.activity.TemplatureQuickActivity
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -38,7 +39,8 @@ class TemplatureFragment : BaseFragment() {
         tv_right.text = "添加"
         tv_right.setOnClickListener {
           //  startActivity(Intent(getBaseActivity(), TemplatureActivity::class.java))
-            startActivity(Intent(getBaseActivity(), TemplatureQuickActivity::class.java))
+//            startActivity(Intent(getBaseActivity(), TemplatureQuickActivity::class.java))
+            startActivity(Intent(getBaseActivity(), TemplatureImmediateActivity::class.java))
         }
         initRecyclerView()
         initRefreshLayout()

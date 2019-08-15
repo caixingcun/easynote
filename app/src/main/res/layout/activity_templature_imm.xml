@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_height="match_parent"
+                  app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <EditText style="@style/edit_style"
+                  android:id="@+id/et_content"
+                  android:hint="请输入指数内容"
+                  android:textSize="15sp"
+                  android:paddingLeft="0dp"
+                  android:paddingRight="0dp"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"/>
+
+        <TextView
+                style="@style/btn_style"
+                android:text="提交"
+                android:id="@+id/btn_save"/>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

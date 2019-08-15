@@ -67,4 +67,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     //bus
     implementation 'org.greenrobot:eventbus:3.1.1'
+    //
+    implementation 'com.contrarywind:Android-PickerView:4.1.6'
+
 }

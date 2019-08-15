@@ -36,10 +36,10 @@ class ZaiQuanBean {
 
 class TemplatureBean (
     val a_id: Int,
-    val code_in: String,
-    val code_out: String,
-    val create_time: String,
-    val index_type: String,
-    val templature: Double
+    var code_in: String,
+    var code_out: String,
+    var index_type: String,
+    val create_time:String,
+    var templature: Double
 ) :Serializable
 

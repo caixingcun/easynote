@@ -26,13 +26,13 @@
                   android:gravity="center"
                   tools:text="中证500"/>
 
-        <EditText style="@style/style_tv_item"
+        <TextView style="@style/style_tv_item"
                   android:textSize="16sp"
                   android:background="@null"
                   android:lines="1"
                   android:imeOptions="actionNext"
                   android:digits="0123456789.-"
-                  android:id="@+id/et_temp"
+                  android:id="@+id/tv_temp"
                   android:gravity="center"
                   tools:text="5.2"/>
         <EditText style="@style/style_tv_item"

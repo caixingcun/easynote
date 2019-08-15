@@ -3,6 +3,7 @@ package com.caixc.easynoteapp.net.service
 import com.caixc.easynoteapp.bean.HttpResult
 import com.caixc.easynoteapp.bean.TemplatureBean
 import io.reactivex.Observable
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface TemperatureService {
@@ -25,6 +26,12 @@ interface TemperatureService {
         @Field("code_in") code_in: String,
         @Field("code_out") code_out: String
     ): Observable<HttpResult>
+    /**
+     * 提交或者更新日志
+     */
+    @POST("/api/temperatures")
+    fun postTemplatures(@Body list: RequestBody): Observable<HttpResult>
+
 
     /**
      * 获取长投温度

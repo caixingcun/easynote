@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.widget.CustomProgress
 import com.gyf.barlibrary.ImmersionBar
 import com.caixc.easynoteapp.util.ActivityController
@@ -93,4 +92,61 @@ abstract class BaseActivity : BaseRxActivity() {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
+    fun formatJson(jsonStr: String?): String {
+        if (null == jsonStr || "" == jsonStr) {
+            return ""
+        }
+        val sb = StringBuilder()
+        var last = '\u0000'
+        var current = '\u0000'
+        var indent = 0
+        var isInQuotationMarks = false
+        for (i in 0 until jsonStr.length) {
+            last = current
+            current = jsonStr[i]
+            when (current) {
+                '"' -> {
+                    if (last != '\\') {
+                        isInQuotationMarks = !isInQuotationMarks
+                    }
+                    sb.append(current)
+                }
+
+                '{', '[' -> {
+                    sb.append(current)
+                    if (!isInQuotationMarks) {
+                        sb.append('\n')
+                        indent++
+                        addIndentBlank(sb, indent)
+                    }
+                }
+
+                '}', ']' -> {
+                    if (!isInQuotationMarks) {
+                        sb.append('\n')
+                        indent--
+                        addIndentBlank(sb, indent)
+                    }
+                    sb.append(current)
+                }
+
+                ',' -> {
+                    sb.append(current)
+                    if (last != '\\' && !isInQuotationMarks) {
+                        sb.append('\n')
+                        addIndentBlank(sb, indent)
+                    }
+                }
+
+                else -> sb.append(current)
+            }
+        }
+        return sb.toString()
+    }
+
+    private fun addIndentBlank(sb: StringBuilder, indent: Int) {
+        for (i in 0 until indent) {
+            sb.append('\t')
+        }
+    }
 }
