@@ -1,5 +1,7 @@
 package com.caixc.easynoteapp.util;
 
+import com.bumptech.glide.Glide;
+
 /**
  * <pre>
  *     author: Blankj
@@ -9,7 +11,6 @@ package com.caixc.easynoteapp.util;
  * </pre>
  */
 public class ConstUtils {
-
     private ConstUtils() {
         throw new UnsupportedOperationException("u can't fuck me...");
     }

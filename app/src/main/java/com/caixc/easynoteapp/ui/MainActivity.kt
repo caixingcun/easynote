@@ -1,5 +1,6 @@
 package com.caixc.easynoteapp.ui
 
+import android.content.Intent
 import com.caixc.easynoteapp.R
 import com.caixc.easynoteapp.base.BaseActivity
 import com.caixc.easynoteapp.base.BaseFragment
@@ -60,5 +61,9 @@ class MainActivity : BaseActivity() {
             .show(fragments[pos])
             .commit()
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

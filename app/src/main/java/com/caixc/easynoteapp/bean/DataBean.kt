@@ -43,3 +43,9 @@ class TemplatureBean (
     var templature: Double
 ) :Serializable
 
+class UserInfo(
+    var id:Int,
+    var header:String,
+    var nickname:String
+)
+

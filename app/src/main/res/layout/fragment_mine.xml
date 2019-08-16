@@ -10,17 +10,39 @@
             android:layout_height="wrap_content">
         <include layout="@layout/include_toolbar"/>
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.NestedScrollView
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
             android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/smart_refresh_layout"
             android:layout_height="match_parent">
 
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:divider="@drawable/shape_divider"
-                android:showDividers="middle"
                 android:layout_height="match_parent">
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="80dp"
+                    android:layout_margin="10dp"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="1dp"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_gravity="center_horizontal"
+                    app:civ_circle_background_color="@color/white"
+                    android:id="@+id/cv_header"
+                    android:layout_height="80dp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_gravity="center_horizontal"
+                      android:text=""
+                      android:id="@+id/tv_nickname"
+                      android:hint="暂无名称"
+                      android:textColor="@color/white"
+                      android:layout_margin="20dp"
+                      android:layout_height="wrap_content"/>
+
+            <View android:background="@color/white"
+                  android:layout_width="match_parent"
+                  android:layout_height="1px"/>
+
             <TextView android:layout_width="match_parent"
                       android:text="修改密码"
                       android:padding="20dp"
@@ -28,6 +50,9 @@
                       android:textColor="@color/white"
                       android:background="@color/grey_text"
                       android:layout_height="wrap_content"/>
+            <View android:background="@color/white"
+                  android:layout_width="match_parent"
+                  android:layout_height="1px"/>
             <TextView android:layout_width="match_parent"
                       android:text="意见反馈"
                       android:padding="20dp"
@@ -35,6 +60,9 @@
                       android:textColor="@color/white"
                       android:background="@color/grey_text"
                       android:layout_height="wrap_content"/>
+            <View android:background="@color/white"
+                  android:layout_width="match_parent"
+                  android:layout_height="1px"/>
             <TextView android:layout_width="match_parent"
                       android:text="版本更新"
                       android:id="@+id/tv_update"
@@ -42,11 +70,16 @@
                       android:textColor="@color/white"
                       android:background="@color/grey_text"
                       android:layout_height="wrap_content"/>
-            <View android:layout_width="match_parent"
+            <View android:background="@color/white"
+                  android:layout_width="match_parent"
                   android:layout_height="1px"/>
 
+            <View android:layout_width="match_parent"
+                  android:layout_height="1px"/>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
     <TextView android:layout_width="match_parent"
               android:text="退出登录"
               android:layout_margin="20dp"

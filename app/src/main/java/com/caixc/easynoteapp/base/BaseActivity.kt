@@ -8,6 +8,9 @@ import com.caixc.easynoteapp.widget.CustomProgress
 import com.gyf.barlibrary.ImmersionBar
 import com.caixc.easynoteapp.util.ActivityController
 import com.caixc.easynoteapp.util.LogUtils
+import com.luck.picture.lib.PictureSelector
+import com.luck.picture.lib.config.PictureConfig
+import com.luck.picture.lib.config.PictureMimeType
 
 
 abstract class BaseActivity : BaseRxActivity() {
@@ -148,5 +151,22 @@ abstract class BaseActivity : BaseRxActivity() {
         for (i in 0 until indent) {
             sb.append('\t')
         }
+    }
+
+    fun takePhoto() {
+        PictureSelector.create(mActivity)
+            .openCamera(PictureMimeType.ofImage())
+            .compress(true)
+            .minimumCompressSize(300)
+            .forResult(PictureConfig.REQUEST_CAMERA)
+    }
+
+    fun chooseImage(imageSize: Int) {
+        PictureSelector.create(mActivity)
+            .openGallery(PictureMimeType.ofImage())
+            .maxSelectNum(imageSize)
+            .compress(true)
+            .minimumCompressSize(300)
+            .forResult(PictureConfig.CHOOSE_REQUEST)
     }
 }

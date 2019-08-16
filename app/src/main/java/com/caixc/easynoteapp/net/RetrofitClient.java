@@ -39,7 +39,7 @@ public class RetrofitClient {
         };
     }
 
-    private static OkHttpClient createOkHttpClient() {
+    public static OkHttpClient createOkHttpClient() {
         HttpsUtils.SSLParams sslSocketFactory = HttpsUtils.INSTANCE.getSslSocketFactory();
         return new OkHttpClient().newBuilder()
                 .connectTimeout(30, TimeUnit.SECONDS)
