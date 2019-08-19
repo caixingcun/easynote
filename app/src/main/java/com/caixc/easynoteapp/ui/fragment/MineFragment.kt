@@ -28,6 +28,7 @@ import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
 import com.caixc.easynoteapp.GlideApp
 import com.caixc.easynoteapp.global.Urls.Companion.IMAGE_URL
+import com.caixc.easynoteapp.ui.activity.FuLiActivity
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.tbruyelle.rxpermissions2.RxPermissions
 import okhttp3.MediaType
@@ -40,6 +41,7 @@ class MineFragment : BaseFragment() {
 
     override fun setLayout(): Int = com.caixc.easynoteapp.R.layout.fragment_mine
 
+    var isAdmin = false
     override fun initView() {
         tv_title.text = "我的"
         iv_left.visibility = View.INVISIBLE
@@ -54,6 +56,7 @@ class MineFragment : BaseFragment() {
             startActivity(Intent(context, FeedBackActivity::class.java))
         }
 
+
         cv_header.setOnClickListener {
             RxPermissions(getBaseActivity())
                 .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -63,6 +66,13 @@ class MineFragment : BaseFragment() {
                     }
                 }
         }
+        tv_fuli.setOnClickListener {
+           startActivity(Intent(getBaseActivity(),FuLiActivity::class.java))
+        }
+//        tv_update.setOnClickListener {
+//            SpeechSynthesizer.shareInstance().start("支付宝到账10元")
+//        }
+
     }
 
     override fun initListener() {
@@ -144,11 +154,37 @@ class MineFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : MyDefaultObserver<UserInfo>(getBaseActivity()) {
                 override fun onNext(t: UserInfo) {
-                    getBaseActivity().hideDialog()
                     userInfo = t
+                    getIsAdmin()
+                }
+            })
+    }
+
+    fun getIsAdmin() {
+
+        RetrofitClient()
+            .getInstance(Urls.HOST)
+            .create(InfoService::class.java)
+            .getIsAdmin()
+            .doOnSubscribe { getBaseActivity().addDisposable(it) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : MyDefaultObserver<HttpResult>(getBaseActivity()) {
+                override fun onNext(t: HttpResult) {
+                    getBaseActivity().hideDialog()
+                    isAdmin = true
+                    refreshView()
+                }
+
+                override fun onError(e: Throwable) {
+                    super.onError(e)
+                    isAdmin = false
                     refreshView()
                 }
             })
+
+        getBaseActivity().hideDialog()
+        refreshView()
     }
 
     private fun refreshView() {
@@ -163,6 +199,10 @@ class MineFragment : BaseFragment() {
                 .load(glideUrl)
                 .into(cv_header)
         }
+
+            tv_fuli.visibility = if (isAdmin) {
+                View.VISIBLE
+            } else View.GONE
 
         tv_nickname.text = userInfo.nickname
     }

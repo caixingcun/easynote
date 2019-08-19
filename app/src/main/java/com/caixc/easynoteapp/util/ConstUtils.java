@@ -1,6 +1,5 @@
 package com.caixc.easynoteapp.util;
 
-import com.bumptech.glide.Glide;
 
 /**
  * <pre>
